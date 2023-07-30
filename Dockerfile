@@ -17,13 +17,15 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 COPY . /opt/CTFd
 
+# Add SSO plugin:
+RUN git clone https://github.com/r00tstici/CTFd-SSO-plugin.git ./CTFd/plugins/CTFd-SSO-plugin
+
 RUN pip install --no-cache-dir -r requirements.txt \
     && for d in CTFd/plugins/*; do \
         if [ -f "$d/requirements.txt" ]; then \
             pip install --no-cache-dir -r "$d/requirements.txt";\
         fi; \
     done;
-
 
 FROM python:3.9-slim-buster as release
 WORKDIR /opt/CTFd
