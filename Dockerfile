@@ -18,7 +18,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY . /opt/CTFd
 
 # Add SSO plugin:
-RUN git clone https://github.com/r00tstici/CTFd-SSO-plugin.git ./CTFd/plugins/CTFd-SSO-plugin
+RUN git clone https://github.com/r00tstici/CTFd-SSO-plugin.git CTFd/plugins/CTFd-SSO-plugin
 
 RUN pip install --no-cache-dir -r requirements.txt \
     && for d in CTFd/plugins/*; do \
@@ -51,6 +51,9 @@ RUN useradd \
 
 COPY --chown=1001:1001 --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy SSO plugin
+COPY --chown=1001:1001 --from=build /opt/CTFd/CTFd/plugins/CTFd-SSO-plugin /opt/CTFd/CTFd/plugins/CTFd-SSO-plugin
 
 USER 1001
 EXPOSE 8000
