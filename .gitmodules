@@ -1,0 +1,3 @@
+[submodule "CTFd/plugins/CTFd-SSO-plugin"]
+	path = CTFd/plugins/CTFd-SSO-plugin
+	url = https://github.com/bman46/CTFd-SSO-plugin.git
