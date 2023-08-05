@@ -22,6 +22,14 @@
           <hr>
         {% endif %}
 
+        {% for client in oauth_clients() %}
+        <a class="btn btn-secondary btn-lg btn-block" href="{{ url_for('sso.sso_oauth', client_id=client.id) }}">
+          Log in with {{ client.name }}
+        </a>
+        
+        <hr>
+        {% endfor %}
+
         {% with form = Forms.auth.LoginForm() %}
           <form method="post" accept-charset="utf-8" autocomplete="off">
             <div class="mb-3">
