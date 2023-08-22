@@ -31,7 +31,7 @@ from CTFd.utils.sessions import CachingSessionInterface
 from CTFd.utils.updates import update_check
 from CTFd.utils.user import get_locale
 
-__version__ = "3.5.3"
+__version__ = "3.6.0"
 __channel__ = "oss"
 
 
@@ -276,7 +276,7 @@ def create_app(config="CTFd.config.Config"):
             utils.set_config("ctf_version", __version__)
 
         if not utils.get_config("ctf_theme"):
-            utils.set_config("ctf_theme", DEFAULT_THEME)
+            utils.set_config("ctf_theme", "core-beta")
 
         update_check(force=True)
 
